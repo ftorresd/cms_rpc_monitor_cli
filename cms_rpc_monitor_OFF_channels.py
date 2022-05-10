@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
 import os
+import sys
 import csv
 from tqdm import tqdm
 import pprint
+
 pp = pprint.PrettyPrinter(indent=4)
 
 import cx_Oracle
@@ -29,7 +31,7 @@ connection_str = """(
 # user="CMS_RPC_CONF", password="RPCConf_Own21", dsn=connection_str
 # )
 connection = cx_Oracle.connect(
-    user="CMS_RPC_R", password="rpcr34d3R", dsn=connection_str
+    user="CMS_RPC_R", password=sys.argv[1], dsn=connection_str
 )
 
 cursor = connection.cursor()
@@ -54,8 +56,7 @@ with open("data/RPC_Chamber_HV_Map.csv") as file:
     csvreader = csv.reader(file)
     header = next(csvreader)
     for dpid, channel in csvreader:
-        channels[channel]=int(dpid)
-
+        channels[channel] = int(dpid)
 
 
 if __name__ == "__main__":
@@ -69,9 +70,6 @@ if __name__ == "__main__":
     print("All VMONs:")
     pp.pprint(vmons)
     print("\n\n")
-    
-
 
     print("Channels with VMON < 100:")
     pp.pprint(low_vmon)
-
