@@ -110,9 +110,6 @@ def main():
         complete_while_typing=True,
     )
 
-    # connection = cx_Oracle.connect(
-    # user="CMS_RPC_CONF", password="RPCConf_Own21", dsn=connection_str
-    # )
     connection = cx_Oracle.connect(
         user="CMS_RPC_R", password=sys.argv[1], dsn=connection_str
     )
@@ -133,8 +130,8 @@ def main():
         ACTUAL_IMONS.append(ACTUAL_IMON)
         ACTUAL_STATUSES.append(ACTUAL_STATUS)
 
-    # print(CHANGE_DATES)
-    # print(ACTUAL_IMONS)
+    print(CHANGE_DATES)
+    print(ACTUAL_IMONS)
 
 
 if __name__ == "__main__":

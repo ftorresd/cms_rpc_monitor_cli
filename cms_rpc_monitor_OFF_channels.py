@@ -27,9 +27,7 @@ connection_str = """(
     )
 )"""
 
-# connection = cx_Oracle.connect(
-# user="CMS_RPC_CONF", password="RPCConf_Own21", dsn=connection_str
-# )
+
 connection = cx_Oracle.connect(
     user="CMS_RPC_R", password=sys.argv[1], dsn=connection_str
 )
